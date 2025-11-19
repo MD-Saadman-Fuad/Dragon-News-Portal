@@ -78,19 +78,19 @@ VITE_FIREBASE_APP_ID=1:1234567890:web:abcdef123456
 Recommended `src/firebase/firebase.config.js` (reads from `import.meta.env`):
 
 ```js
-import { initializeApp } from 'firebase/app'
+import { initializeApp } from "firebase/app";
 
 const firebaseConfig = {
-	apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
-	authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
-	projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
-	storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
-	messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
-	appId: import.meta.env.VITE_FIREBASE_APP_ID,
-}
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
+};
 
-const app = initializeApp(firebaseConfig)
-export default app
+const app = initializeApp(firebaseConfig);
+export default app;
 ```
 
 Do NOT commit `.env` or any service account keys. This repo's `.gitignore` already ignores common secret files and `src/firebase/firebase.config.js`.
@@ -100,12 +100,13 @@ Do NOT commit `.env` or any service account keys. This repo's `.gitignore` alrea
 ## Firebase: Authentication setup
 
 1. In Firebase Console → Authentication → Sign-in method:
-	 - Enable **Email/Password**.
-	 - Enable **Google** provider.
-	 - Enable **GitHub** provider (create a GitHub OAuth App to get Client ID/Secret and paste into Firebase).
+   - Enable **Email/Password**.
+   - Enable **Google** provider.
+   - Enable **GitHub** provider (create a GitHub OAuth App to get Client ID/Secret and paste into Firebase).
 2. Add authorized domains (e.g., `localhost`, your production domain) in Firebase Auth settings.
 
 Notes on OAuth:
+
 - For GitHub, register a new OAuth App on GitHub and set the Authorization callback URL as the Firebase one provided by the console.
 - The client-side Firebase config (apiKey etc.) is not a secret — however, service account keys and OAuth Client Secrets must never be committed.
 
